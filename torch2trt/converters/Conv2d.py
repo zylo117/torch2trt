@@ -10,11 +10,11 @@ def convert_Conv2d(ctx):
     output = ctx.method_return
 
     kernel_size = module.kernel_size
-    if not isinstance(kernel_size, tuple):
+    if not (isinstance(kernel_size, tuple) or isinstance(kernel_size, list)):
         kernel_size = (kernel_size, ) * 2
 
     stride = module.stride
-    if not isinstance(stride, tuple):
+    if not (isinstance(stride, tuple) or isinstance(stride, list)):
         stride = (stride, ) * 2
 
     padding = module.padding
